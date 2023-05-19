@@ -12,10 +12,10 @@ module.exports = (sequelize, DataTypes) => {
   );
   Pessoas.associate = function (models) {
     Pessoas.hasMany(models.Turmas, {
-      foreinKey: 'docente_id',
+      foreignKey: 'docente_id',
     });
     Pessoas.hasMany(models.Matriculas, {
-      foreingKay: 'estudante_id',
+      foreignKey: 'estudante_id',
     });
   };
   return Pessoas;

@@ -9,14 +9,14 @@ module.exports = (sequelize, DataTypes) => {
   );
   Turmas.associate = function (models) {
     Turmas.hasMany(models.Matriculas, {
-      foreingKey: 'turma_id',
+      foreignKey: 'turma_id',
     });
 
     Turmas.belongsTo(models.Pessoas, {
-      foreingKey: 'docente_id',
+      foreignKey: 'docente_id',
     });
     Turmas.belongsTo(models.Niveis, {
-      foreingKey: 'nivel_id',
+      foreignKey: 'nivel_id',
     });
   };
   return Turmas;

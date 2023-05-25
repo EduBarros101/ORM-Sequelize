@@ -13,6 +13,11 @@ router
     PessoaController.pegaUmaMatricula
   )
   .get('/pessoas/:estudanteId/matricula', PessoaController.pegaMatriculas)
+  .get(
+    '/pessoas/matricula/:turmaId/confirmadas',
+    PessoaController.pegaMatriculasPorTurma
+  )
+  .get('/pessoas/matricula/lotada', PessoaController.pegaTurmasLotadas)
   .post('/pessoas', PessoaController.criaPessoa)
   .post('/pessoas/:estudanteId/matricula', PessoaController.criaMatricula)
   .post('/pessoas/:id/restaura', PessoaController.restauraPessoa)

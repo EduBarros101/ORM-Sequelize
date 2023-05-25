@@ -144,7 +144,7 @@ class PessoaController {
   }
 
   static async apagaMatricula(req, res) {
-    const { estudanteId, matriculaId } = req.params;
+    const { matriculaId } = req.params;
 
     try {
       await database.Matriculas.destroy({ where: { id: Number(matriculaId) } });
@@ -169,6 +169,21 @@ class PessoaController {
       });
 
       return res.status(200).json({ mensagem: `Id ${id} restaurado.` });
+    } catch (error) {
+      return res.status(500).json(error.message);
+    }
+  }
+
+  static async pegaMatriculas(req, res) {
+    const { estudanteId } = req.params;
+
+    try {
+      const pessoa = await database.Pessoas.findOne({
+        where: { id: Number(estudanteId) },
+      });
+      const matriculas = await pessoa.getAulasMatriculadas();
+
+      return res.status(200).json(matriculas);
     } catch (error) {
       return res.status(500).json(error.message);
     }
